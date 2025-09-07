@@ -6,4 +6,8 @@ kv_namespaces = [
 ]
 
 # 添加您的 Resend API 密钥
+
 vars = { RESEND_API_KEY = "re_McTn56M4_HcU2bWX5R7cixx9ewUF8YNTi" }
+
+[assets]
+directory = "./"
