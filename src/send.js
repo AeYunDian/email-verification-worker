@@ -57,9 +57,9 @@ export async function handleSendVerification(request, env) {
         'Authorization': `Bearer ${env.RESEND_API_KEY}`
       },
       body: JSON.stringify({
-        from: 'onboarding@resend.dev',
+        from: 'verification@heiye.xin',
         to: email,
-        subject: 'Your Verification Code',
+        subject: '[Heiye] Your Verification Code',
         html: `<p>Your verification code is: <strong>${verificationCode}</strong></p><p>This code will expire in 5 minutes.</p>`
       })
     });
@@ -103,4 +103,5 @@ export async function handleSendVerification(request, env) {
       }
     );
   }
+
 }
