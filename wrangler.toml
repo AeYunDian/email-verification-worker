@@ -8,10 +8,5 @@ kv_namespaces = [
 # 添加您的 Resend API 密钥
 vars = { RESEND_API_KEY = "re_McTn56M4_HcU2bWX5R7cixx9ewUF8YNTi" }
 
-# 添加构建配置以避免 node_modules 问题
-[build]
-upload.format = "modules"
-upload.main = "./src/index.js"
-
-[build.upload.rules]
-exclude = ["node_modules/**"]
+# 正确的入口点配置
+main = "./src/index.js"
