@@ -1,67 +1,40 @@
-export async function handleSendVerification(request, env) {
-  try {
-    // 解析请求体
-    const { email } = await request.json();
-    
-    if (!email) {
-      return new Response(
-        JSON.stringify({ error: 'Email is required' }), 
-        { status: 400, headers: { 'Content-Type': 'application/json' } }
-      );
+// 导入处理函数
+import { handleSendVerification } from './api/send.js';
+import { handleVerifyCode } from './api/verify.js';
+
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+    const path = url.pathname;
+
+    // 设置 CORS 头
+    const corsHeaders = {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type',
+    };
+
+    // 处理预检请求
+    if (request.method === 'OPTIONS') {
+      return new Response(null, { headers: corsHeaders });
     }
 
-    // 生成随机验证码和 token
-    const verificationCode = Math.floor(100000 + Math.random() * 900000).toString();
-    const token = generateToken();
-    
-    // 存储到 KV，有效期 5 分钟
-    await env.EMAIL_VERIFICATION.put(
-      `token:${token}`, 
-      JSON.stringify({ email, code: verificationCode }),
-      { expirationTtl: 300 } // 5 分钟
-    );
+    // 路由处理
+    if (request.method === 'POST') {
+      if (path === '/api/send') {
+        const response = await handleSendVerification(request, env);
+        response.headers.set('Access-Control-Allow-Origin', '*');
+        return response;
+      } else if (path === '/api/verify') {
+        const response = await handleVerifyCode(request, env);
+        response.headers.set('Access-Control-Allow-Origin', '*');
+        return response;
+      }
+    }
 
-    // 使用 Resend 发送邮件
-    const resendResponse = await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${env.RESEND_API_KEY}`
-      },
-      body: JSON.stringify({
-        from: 'verification@heiye.xin',
-        to: email,
-        subject: '[Heiye] Your Verification Code',
-        html: `<p>Your verification code is: <strong>${verificationCode}</strong></p><p>This code will expire in 5 minutes.</p>`
-      })
+    return new Response('Not Found', { 
+      status: 404,
+      headers: corsHeaders
     });
-
-    if (!resendResponse.ok) {
-      const error = await resendResponse.text();
-      console.error('Resend API error:', error);
-      return new Response(
-        JSON.stringify({ error: 'Failed to send email' }), 
-        { status: 500, headers: { 'Content-Type': 'application/json' } }
-      );
-    }
-
-    // 返回 token
-    return new Response(
-      JSON.stringify({ token }), 
-      { status: 200, headers: { 'Content-Type': 'application/json' } }
-    );
-  } catch (error) {
-    console.error('Error in send verification:', error);
-    return new Response(
-      JSON.stringify({ error: 'Internal server error' }), 
-      { status: 500, headers: { 'Content-Type': 'application/json' } }
-    );
   }
-}
-
-// 生成随机 token
-function generateToken() {
-  return Array.from(crypto.getRandomValues(new Uint8Array(16)))
-    .map(b => b.toString(16).padStart(2, '0'))
-    .join('');
-}
+};
