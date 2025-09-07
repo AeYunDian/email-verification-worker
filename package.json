@@ -4,10 +4,11 @@
   "description": "Email verification API using Resend and Cloudflare Workers",
   "main": "src/index.js",
   "scripts": {
-    "dev": "wrangler dev src/index.js",
-    "deploy": "wrangler deploy src/index.js"
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
   },
   "devDependencies": {
     "wrangler": "^4.34.0"
-  }
+  },
+  "private": true
 }

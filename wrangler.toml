@@ -1,13 +1,17 @@
-name = "resend-email-verification"
-compatibility_date = "2025-09-07"
+name = "email-verification-worker"
+compatibility_date = "2024-03-20"
 
 kv_namespaces = [
   { binding = "EMAIL_VERIFICATION", id = "16637e6b6e7640ae983759572409ae49" }
 ]
 
 # 添加您的 Resend API 密钥
-
 vars = { RESEND_API_KEY = "re_McTn56M4_HcU2bWX5R7cixx9ewUF8YNTi" }
 
-[assets]
-directory = "./"
+# 添加构建配置以避免 node_modules 问题
+[build]
+upload.format = "modules"
+upload.main = "./src/index.js"
+
+[build.upload.rules]
+exclude = ["node_modules/**"]
