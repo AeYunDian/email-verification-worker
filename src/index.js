@@ -32,7 +32,7 @@ export default {
   // 读取并返回 ./qrcode/update.ini 文件内容
   try {
     const content = await env.ASSETS.fetch(
-      new URL('/qrcode/update.ini', request.url)
+      new URL('./qrcode/update.ini', request.url)
     );
     
     if (content.status === 200) {
@@ -73,4 +73,5 @@ export default {
   }
 
 };
+
 
