@@ -7,9 +7,9 @@ const updateIniContent = `[update_info]
 version = 1.2.0
 build_number = 1200
 release_date = 2025-10-01
-download_url = https://e.seewo.com/download/file?code=EasiNote5&&version=5.2.4.9158
-checksum = 0860b80f3918f665aba81002e085e24f548209affe344ba58c1ff6dfcae798bb
-file_size = 173898112
+download_url = https://www.heiye.xin/qrcode/1.2.0/updateSetup.exe
+checksum = 0d27a6a9abc843c21c7b527f5cf8a61f8b71cff5eb7058fa5f3aff7543218782
+file_size = 1212416
 
 [release_notes]
 zh-CN = 本次只是测试更新功能`;
@@ -65,3 +65,4 @@ export default {
     });
   }
 };
+
