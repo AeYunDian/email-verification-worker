@@ -1,7 +1,7 @@
 name = "email-verification-worker"
 compatibility_date = "2025-10-01"
 main = "./src/index.js"
-d
+
 kv_namespaces = [
   { binding = "EMAIL_VERIFICATION", id = "16637e6b6e7640ae983759572409ae49" }
 ]
@@ -10,10 +10,11 @@ kv_namespaces = [
 vars = { RESEND_API_KEY = "re_McTn56M4_HcU2bWX5R7cixx9ewUF8YNTi" }
 
 [assets]
-binding = "assets"	
+binding = "ASSETS"	
 directory = "./public"	
 not_found_handling = "single-page-application"
 run_worker_first = true
+
 
 
 
