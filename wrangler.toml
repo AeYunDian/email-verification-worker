@@ -11,9 +11,10 @@ vars = { RESEND_API_KEY = "re_McTn56M4_HcU2bWX5R7cixx9ewUF8YNTi" }
 
 [assets]
 binding = "assets"	
-directory = "./dist"	
+directory = "./"	
 not_found_handling = "single-page-application"
 run_worker_first = true
+
 
 
 
