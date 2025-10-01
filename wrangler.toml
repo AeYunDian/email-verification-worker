@@ -1,5 +1,6 @@
-name = "email-verification-worker"
+name = "hyapi"
 compatibility_date = "2024-03-20"
+main = "./src/index.js"
 
 kv_namespaces = [
   { binding = "EMAIL_VERIFICATION", id = "16637e6b6e7640ae983759572409ae49" }
@@ -8,5 +9,10 @@ kv_namespaces = [
 # 添加您的 Resend API 密钥
 vars = { RESEND_API_KEY = "re_McTn56M4_HcU2bWX5R7cixx9ewUF8YNTi" }
 
+[assets]
+binding = "assets"		#静态资源绑定名默认不可修改
+directory = "./"	#前端vue项目打包的静态资源存放位置,默认dist
+not_found_handling = "single-page-application"
+run_worker_first = true
 # 正确的入口点配置
-main = "./src/index.js"
+
