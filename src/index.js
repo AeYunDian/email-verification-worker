@@ -7,7 +7,7 @@ const updateIniContent = `[update_info]
 version = 1.2.0
 build_number = 1200
 release_date = 2025-10-01
-download_url = https://www.heiye.xin/qrcode/1.2.0/update_setup.exe
+download_url = https://www.heiye.xin/qrcode/1.2.0/updateSetup.exe
 checksum = 0d27a6a9abc843c21c7b527f5cf8a61f8b71cff5eb7058fa5f3aff7543218782
 file_size = 1212416
 
@@ -78,5 +78,6 @@ export default {
     });
   }
 };
+
 
 
