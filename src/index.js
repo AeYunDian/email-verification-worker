@@ -4,15 +4,15 @@ import { handleVerifyCode } from './verify.js';
 
 // 直接在代码中定义 ini 内容
 const updateIniContent = `[update_info]
-version = 1.2.0
-build_number = 1200
+version = 1.3.0
+build_number = 1300
 release_date = 2025-10-01
-download_url = https://www.heiye.xin/qrcode/1.2.0/updateSetup.exe
-checksum = 0d27a6a9abc843c21c7b527f5cf8a61f8b71cff5eb7058fa5f3aff7543218782
-file_size = 1212416
+download_url = https://www.heiye.xin/qrcode/1.3.0/updateSetup.exe
+checksum = 58eb39d34bbb8ae2ddd791b5195ef336a4ccbaf60bbfd65325b3e306a0d1f52d
+file_size = 1216512
 
 [release_notes]
-zh-CN = 本次只是测试更新功能`;
+zh-CN = 1.为开发人员的优化 2.优化速度及用户体验`;
 
 export default {
   async fetch(request, env) {
@@ -78,6 +78,7 @@ export default {
     });
   }
 };
+
 
 
 
