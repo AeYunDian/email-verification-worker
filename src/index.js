@@ -8,7 +8,7 @@ version = 1.3.0
 build_number = 1300
 release_date = 2025-10-02
 download_url = https://www.heiye.xin/qrcode/1.3.0/updateSetup.exe
-checksum = 58eb39d34bbb8ae2ddd791b5195ef336a4ccbaf60bbfd65325b3e306a0d1f52d
+checksum = 2fc79f40a981f9ead34581e77ed81e828815ba32f605d80a05d34b9bdf217480
 file_size = 1216512
 
 [release_notes]
@@ -78,6 +78,7 @@ export default {
     });
   }
 };
+
 
 
 
