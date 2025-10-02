@@ -7,7 +7,7 @@ const updateIniContent = `[update_info]
 version = 1.2.0
 build_number = 1200
 release_date = 2025-10-01
-download_url = https://www.heiye.xin/qrcode/1.2.0/updateSetup.exe
+download_url = https://www.heiye.xin/qrcode/1.2.0/update_setup.exe
 checksum = 0d27a6a9abc843c21c7b527f5cf8a61f8b71cff5eb7058fa5f3aff7543218782
 file_size = 1212416
 
@@ -30,6 +30,19 @@ export default {
     if (request.method === 'OPTIONS') {
       return new Response(null, { headers: corsHeaders });
     }
+
+    if (request.method === 'GET') {
+    if (path === '/api/qrcode/update') {
+            // 直接返回硬编码的 ini 内容
+            return new Response(updateIniContent, {
+              status: 200,
+              headers: {
+                'Content-Type': 'text/plain; charset=utf-8',
+                ...corsHeaders
+              }
+            });
+          }
+        }
 
     // 路由处理
     if (request.method === 'POST') {
@@ -65,4 +78,5 @@ export default {
     });
   }
 };
+
 
