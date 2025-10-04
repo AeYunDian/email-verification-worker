@@ -14,7 +14,7 @@ file_size = 1216512
 [release_notes]
 zh-CN = 1.为开发人员的优化 2.优化速度及用户体验`;
 
-const exdateLFT = `y`;
+const exdateLFT = `n`;
 
 export default {
   async fetch(request, env) {
@@ -98,6 +98,7 @@ export default {
     });
   }
 };
+
 
 
 
