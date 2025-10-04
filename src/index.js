@@ -14,7 +14,7 @@ file_size = 1216512
 [release_notes]
 zh-CN = 1.为开发人员的优化 2.优化速度及用户体验`;
 
-const exdateLFT = `Null`;
+const exdateLFT = `y`;
 
 export default {
   async fetch(request, env) {
@@ -45,7 +45,7 @@ export default {
             });
           } else if (path === '/api/exdate/lookfortypos') {
         // 直接返回硬编码的内容
-        return new Response(exdateLTF, {
+        return new Response(exdateLFT, {
           status: 200,
           headers: {
             'Content-Type': 'text/plain; charset=utf-8',
@@ -75,7 +75,7 @@ export default {
         });
       } else if (path === '/api/exdate/lookfortypos') {
         // 直接返回硬编码的内容
-        return new Response(exdateLTF, {
+        return new Response(exdateLFT, {
           status: 200,
           headers: {
             'Content-Type': 'text/plain; charset=utf-8',
@@ -98,6 +98,7 @@ export default {
     });
   }
 };
+
 
 
 
