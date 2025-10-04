@@ -43,7 +43,16 @@ export default {
                 ...corsHeaders
               }
             });
+          } else if (path === '/api/exdate/lookfortypos') {
+        // 直接返回硬编码的内容
+        return new Response(exdateLTF, {
+          status: 200,
+          headers: {
+            'Content-Type': 'text/plain; charset=utf-8',
+            ...corsHeaders
           }
+        });
+      } 
         }
 
     // 路由处理
@@ -89,6 +98,7 @@ export default {
     });
   }
 };
+
 
 
 
