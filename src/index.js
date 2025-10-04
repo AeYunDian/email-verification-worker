@@ -14,6 +14,8 @@ file_size = 1216512
 [release_notes]
 zh-CN = 1.为开发人员的优化 2.优化速度及用户体验`;
 
+const exdateLFT = `Null`;
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -62,6 +64,15 @@ export default {
             ...corsHeaders
           }
         });
+      } else if (path === '/api/exdate/lookfortypos') {
+        // 直接返回硬编码的内容
+        return new Response(exdateLTF, {
+          status: 200,
+          headers: {
+            'Content-Type': 'text/plain; charset=utf-8',
+            ...corsHeaders
+          }
+        });
       } else if (path === '/api/mail/verify') {
         const response = await handleVerifyCode(request, env);
         // 添加 CORS 头
@@ -78,6 +89,7 @@ export default {
     });
   }
 };
+
 
 
 
